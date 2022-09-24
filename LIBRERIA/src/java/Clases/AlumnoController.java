@@ -43,7 +43,7 @@ public class AlumnoController {
    
     
     public String guardarAlumno2(Alumno alumno){        
-        String sql = "INSERT INTO universidad.alumno(numero_carne, nombre, correo, direccion, genero_idgenero) ";
+        String sql = "INSERT INTO biblioteca.alumno(codigo, nombre_libro, tipo_de_pasta, editorial, anio_publicacion) ";
              sql += " VALUES(?,?,?,?,?)";              
        try{     
             abrirConexion();
@@ -65,7 +65,7 @@ public class AlumnoController {
     }
     
     public void getAlumnos2(StringBuffer respuesta){   
-        String sql="select * from universidad.alumno";
+        String sql="select * from biblioteca.alumno";
         try{
         abrirConexion();
         respuesta.setLength(0);
@@ -75,11 +75,11 @@ public class AlumnoController {
             if (result!=null){
                 while (result.next()){
                 respuesta.append("<tr>");
-                respuesta.append("<td >").append(result.getString("numero_carne")).append("</td>");
-                respuesta.append("<td >").append(result.getString("nombre")).append("</td>");
-                respuesta.append("<td >").append(result.getString("direccion")).append("</td>");
-                respuesta.append("<td >").append(result.getString("correo")).append("</td>");
-                respuesta.append("<td id=\"").append(result.getString("numero_carne"))
+                respuesta.append("<td >").append(result.getString("codigo")).append("</td>");
+                respuesta.append("<td >").append(result.getString("nombre_libro")).append("</td>");
+                respuesta.append("<td >").append(result.getString("tipo_de_pasta")).append("</td>");
+                respuesta.append("<td >").append(result.getString("editorial")).append("</td>");
+                respuesta.append("<td id=\"").append(result.getString("codigo"))
                         .append("\"  onclick=\"eliminarAlumno(this.id);\">") 
                         //.append("\"  onclick=\"eliminarAlumno("+result.getString("numero_carne")+");\">") 
                         .append(" <a class=\"btn btn-warning\"'><i class=\"fas fa-edit\"></i>  </a>"
